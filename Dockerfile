@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:19-jre-alpine
 
 COPY build/libs/*.jar /opt/app/
 
