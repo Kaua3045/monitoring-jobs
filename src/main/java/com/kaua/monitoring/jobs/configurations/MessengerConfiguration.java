@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class MessengerConfiguration {
 
     @Bean
-    private MessengerGateway messengerGateway() {
+    public MessengerGateway messengerGateway() {
         return new SQSService();
     }
 }
