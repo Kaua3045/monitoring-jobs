@@ -3,7 +3,10 @@ package com.kaua.monitoring.jobs.links;
 import com.kaua.monitoring.jobs.readers.*;
 import com.kaua.monitoring.jobs.readers.outputs.LinkJobOutput;
 import com.kaua.monitoring.jobs.services.gateways.MessengerGateway;
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemWriter;
@@ -29,6 +32,23 @@ public class JobLinks {
 
     @Autowired
     private MessengerGateway messengerGateway;
+
+    public Job fetchUrlsJob(
+            NoRepeatJobReader noRepeatJobReader,
+            OnSpecificDayJobReader onSpecificDayJobReader,
+            TwoTimesAMonthJobReader twoTimesAMonthJobReader,
+            EveryDayJobReader everyDayJobReader,
+            EveryFiveHoursJobReader everyFiveHoursJobReader
+    ) {
+        return new JobBuilder("fetch-urls-job", jobRepository)
+                .incrementer(new RunIdIncrementer())
+                .start(noRepeatStep(noRepeatJobReader))
+                .next(onSpecificDayStep(onSpecificDayJobReader))
+                .next(twoTimesAMonthStep(twoTimesAMonthJobReader))
+                .next(everyDayStep(everyDayJobReader))
+                .next(everyFiveHoursStep(everyFiveHoursJobReader))
+                .build();
+    }
 
     @Bean
     public ItemWriter<LinkJobOutput> writer() {
