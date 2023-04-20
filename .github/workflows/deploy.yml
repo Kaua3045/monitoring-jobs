@@ -26,10 +26,14 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Application build
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-        run: ./gradlew dependencies
         with:
           gradle-version: 7.5
-          arguments: clean build -x test
+
+      - name: dependencies
+        run: ./gradlew dependencies
+
+      - name: build
+        run: ./gradlew clean build -x test
 
       - name: Login to ECR
         id: login-ecr
