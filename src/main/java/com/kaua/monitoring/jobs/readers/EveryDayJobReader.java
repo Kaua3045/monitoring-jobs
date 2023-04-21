@@ -16,8 +16,8 @@ public class EveryDayJobReader {
     private static final String EVERY_DAY_JOB_READER_NAME = "find-all-with-every-day";
 
     private static final String SQL_FIND_ALL_WITH_EVERY_DAY = "SELECT id, url FROM links " +
-            "WHERE (link_execution = 'EVERY_DAYS' " +
-            "AND date_trunc('minutes', execute_date) = date_trunc('minutes', current_timestamp));";
+            "WHERE link_execution = 'EVERY_DAYS' " +
+            "AND to_char(execute_date, 'HH24:MI') = to_char(current_timestamp, 'HH24:MI');";
 
     @Autowired
     private DataSource dataSource;
