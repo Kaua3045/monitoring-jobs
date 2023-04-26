@@ -1,0 +1,5 @@
+postgres:
+  url: ${PG_URL}
+  schema: ${PG_DATABASE}
+  username: ${PG_USER}
+  password: ${PG_PASSWORD}
