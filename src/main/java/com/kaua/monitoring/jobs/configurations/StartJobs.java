@@ -24,6 +24,9 @@ public class StartJobs {
     private JobLinks jobLinks;
 
     @Autowired
+    private LinksJobReader linksJobReader;
+
+    @Autowired
     private NoRepeatJobReader noRepeatJobReader;
 
     @Autowired
@@ -44,11 +47,12 @@ public class StartJobs {
                 new RunnableJob(
                         jobLauncher,
                         jobLinks.fetchUrlsJob(
-                                noRepeatJobReader,
-                                specificDayJobReader,
-                                twoTimesAMonthJobReader,
-                                everyDayJobReader,
-                                everyFiveHoursJobReader
+                                linksJobReader
+//                                noRepeatJobReader,
+//                                specificDayJobReader,
+//                                twoTimesAMonthJobReader,
+//                                everyDayJobReader,
+//                                everyFiveHoursJobReader
                         )),
                 Duration.ofMinutes(1));
     }

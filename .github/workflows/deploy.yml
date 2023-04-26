@@ -1,7 +1,7 @@
 name: Monitoring Jobs
 on:
   push:
-    branches: [feature/fetch-urls-job]
+    branches: [main]
 
 jobs:
   build:
