@@ -18,7 +18,7 @@ public class LinksJobReader {
 
     private static final String LINKS_JOB_READER_NAME = "find-all-links-to-execute";
 
-    private static final String SQL_FIND_ALL_WITH_NEXT_EXECUTE_DATE = "SELECT id, url, link_execution " +
+    private static final String SQL_FIND_ALL_WITH_NEXT_EXECUTE_DATE = "SELECT id, url, link_execution, next_execute_date " +
             "FROM links " +
             "WHERE next_execute_date IS NOT NULL " +
             "AND extract(minute FROM next_execute_date) = extract(minute FROM current_timestamp) " +
