@@ -8,11 +8,12 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 public class ThreadPoolTaskConfiguration {
 
     private final String THREAD_NAME_PREFIX_JOB = "Job-Scheduler";
+    private final int THREAD_POOL_SIZE = 2;
 
     @Bean
     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
         final var threadPoolTask = new ThreadPoolTaskScheduler();
-        threadPoolTask.setPoolSize(4);
+        threadPoolTask.setPoolSize(THREAD_POOL_SIZE);
         threadPoolTask.setThreadNamePrefix(THREAD_NAME_PREFIX_JOB);
         threadPoolTask.initialize();
         return threadPoolTask;
