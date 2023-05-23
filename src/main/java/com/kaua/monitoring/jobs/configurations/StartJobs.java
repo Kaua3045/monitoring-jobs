@@ -41,18 +41,17 @@ public class StartJobs {
     @Autowired
     private EveryFiveHoursJobReader everyFiveHoursJobReader;
 
+    @Autowired
+    private ValidateNextExecuteDateJobReader validateNextExecuteDateJobReader;
+
     @PostConstruct
     public void fetchUrlJobExecution() {
         taskScheduler.scheduleWithFixedDelay(
                 new RunnableJob(
                         jobLauncher,
                         jobLinks.fetchUrlsJob(
-                                linksJobReader
-//                                noRepeatJobReader,
-//                                specificDayJobReader,
-//                                twoTimesAMonthJobReader,
-//                                everyDayJobReader,
-//                                everyFiveHoursJobReader
+                                linksJobReader,
+                                validateNextExecuteDateJobReader
                         )),
                 Duration.ofMinutes(1));
     }
