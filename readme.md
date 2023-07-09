@@ -24,24 +24,11 @@ Eu criei um projeto para verificar a disponibilidade do seu site através de uma
 
 ## Tabela de conteúdos
 
-- [Arquitetura](#arquitetura)
 - [Features](#features)
 - [Requsitos para rodar o projeto](#requisitos)
 - [Instruções para executar o projeto](#instruções-para-executar-o-projeto)
 - [Contribua com o projeto](#contribuindo-com-o-projeto)
 - [Changelog](#changelog)
-
-## Arquitetura
-
-![Circulo da clean architecture](doc/imagens/clean-arch-circle)
-
-**Camadas da aplicação**
-
-*Domain, é a camada onde se encontra as regras de negócio, validações e as interfaces gateways (abstração dos métodos do banco dedados, são usadas para remover o acomplamento com o banco de dados)*
-
-*Application, é a camada que contem todos os casos de uso (criar um usuário, pegar um usuário pelo id, atualizar um usuário, deletar um usuário, esse é famoso CRUD) e contem a integração com o gateway do banco de dados*
-
-*Infrastructure, é a camada responsável por conectar tudo, o usuário com a application e domain layer, contem a conexão com o banco de dados, entidades do banco e as rotas*
 
 ## Features
 
