@@ -1,0 +1,2 @@
+- [ ] Adicionar testes para as partes que ainda não tem
+- [ ] Passar o nome da QUEUE por variável de ambiente
